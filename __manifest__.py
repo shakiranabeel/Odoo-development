@@ -7,7 +7,7 @@
     'description': """hospital management""",
     'website': 'https://code-ox.com',
     'category': 'Extra tools',
-    'depends': [],
+    'depends': ['mail'],
     'data': [
         'security/ir.model.access.csv',
         'views/menu.xml',
