@@ -11,6 +11,9 @@
     'data': [
         'security/ir.model.access.csv',
         'views/menu.xml',
+        'views/patient.xml',
+        'views/female.xml'
+
     ],
     'installable': True,
     'application': True,

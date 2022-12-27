@@ -9,6 +9,7 @@ class hospiatlpatient(models.Model):
     gender=fields.Selection([('male','Male'),('female','Female')], string="Gender")
     address= fields.Text(string='Address')
     bloodgroup=fields.Char(string='Blood group')
+    active=fields.Boolean(string="Active", default = True)
 
 
     
