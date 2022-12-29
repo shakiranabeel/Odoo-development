@@ -1,9 +1,9 @@
 from  odoo import api, fields, models
 
-class hospiatlpatient(models.Model):
+class hospitalpatient(models.Model):
     _name = 'hospital.patient'
     _inherit = ['mail.thread','mail.activity.mixin']
-    _description = "hospial patient"
+    _description = "hospital patient"
 
     name = fields.Char(string ='Name', tracking = True)
     age = fields.Integer(string = 'Age')

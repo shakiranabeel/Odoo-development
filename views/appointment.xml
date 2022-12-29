@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    # creating form view
+    <record id="view_appointment_patient_form" model= "ir.ui.view">
+        <field name="name">appointment.patient.form</field>
+        <field name="model">appointment.patient</field>
+        <field name="arch" type="xml">
+
+            
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name = "patient_id"/>
+                            <field name = "appointment_date"/>
+                            <field name = "booking_date"/>
+
+                        
+                        </group>
+                        
+                        
+                    </group>
+                </sheet>
+                <!-- chatter -->
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+            
+        </field>
+    </record>
+    
+    #creating window action
+    <record id="action_appointments" model="ir.actions.act_window">
+            <field name="name">Appointments</field>
+            <field name="res_model">appointment.patient</field>
+            <field name="view_mode">form</field>
+            <field name="context">{}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Enter first appointment
+                </p>
+            </field>
+    </record>
+
+
+
+    <menuitem id = "appointments_menu"
+            name = "Appointments "
+            action = "action_appointments"
+            parent ="appointment_main_menu"
+            sequence = "10"/>
+</odoo>
