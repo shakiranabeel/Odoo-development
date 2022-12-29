@@ -15,6 +15,9 @@
                             <field name ="name"/>
                             <field name="gender"/>
                             <field name="bloodgroup"/>
+                            <field name="date_of_birth"/>
+                            <field name="ref"/>
+
                         </group>
                         <group>
                             <field name ="age"/>
@@ -46,6 +49,8 @@
                 <field name="gender"/>
                 <field name="age"/>
                 <field name="bloodgroup"/>
+                <field name="ref"/>
+
             </tree>
 
 
@@ -105,7 +110,6 @@
                 <filter name="filter_male" string="Male" domain="[('gender','=','male')]"/>
                 <filter name="filter_female" string="Female" domain="[('gender','=','female')]"/>
                 <separator/>
-                <filter name="filter_kids" string="Kids" domain="[('age','&lt;=',5)]"/>
                 <filter name="filter_archive" string="Archive" domain="[('active','=',False)]"/>
                 <group expand="1" string="Group by">
                     <filter string="Gender" name="group_by_gender" context ="{'group_by':'gender'}"/>
