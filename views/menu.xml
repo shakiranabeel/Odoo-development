@@ -11,11 +11,11 @@
             name = "Patient details"
             parent ="hospital_main_menu"
             sequence = "0"/>
-
-    <menuitem id = "appointment_main_menu"
-            name = "Appointments"
-            parent ="hospital_main_menu"
-            sequence = "0"/>
+    <menuitem id="appointments_main_menu"
+            name="Appointments"
+            parent="hospital_main_menu"
+            sequence="10"/>
+    
 
    
 </odoo>

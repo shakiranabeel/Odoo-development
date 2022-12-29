@@ -1,4 +1,4 @@
-from  odoo import api, fields, models
+from odoo import api, fields, models
 
 class appointmentpatient(models.Model):
     _name = 'appointment.patient'
@@ -6,8 +6,9 @@ class appointmentpatient(models.Model):
     _description = "appointment patient"
 
     patient_id = fields.Many2one('hospital.patient', string="Patient")
-    appointment_date = fields.Datetime(string="Appointment date")
-    booking_date = fields.Date(string="Booking date")
-    
+    appointment_date = fields.Datetime(string="Appointment date", default=fields.Datetime.now)
+    booking_date = fields.Date(string="Booking date", default = fields.Date.context_today)
+    gender=fields.Selection([('male','Male'),('female','Female')], string="Gender", related ='patient_id.gender')
+   
 
     
