@@ -18,6 +18,12 @@ class appointmentpatient(models.Model):
         ('1','Low'),
         ('2','High'),
         ('3','Very high')], string="Priority")
+    state = fields.Selection([
+        ('draft','Draft'),
+        ('in_consultation','In_consultation'),
+        ('done','Done'),
+        ('cancel','Cancelled')], string="State")
+
 
 class AppointmentPharmacyLine(models.Model):
     _name = 'appointment.pharmacy.line'
