@@ -13,6 +13,11 @@ class appointmentpatient(models.Model):
     ref = fields.Char(string = 'Reference')
     appointment_pharmacy_line_ids =fields.One2many('appointment.pharmacy.line', 'appointment_id', string ='Pharmacy')
     prescription =fields.Html(string="Prescription")
+    priority = fields.Selection([
+        ('0','Normal'),
+        ('1','Low'),
+        ('2','High'),
+        ('3','Very high')], string="Priority")
 
 class AppointmentPharmacyLine(models.Model):
     _name = 'appointment.pharmacy.line'
