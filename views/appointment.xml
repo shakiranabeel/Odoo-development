@@ -25,7 +25,21 @@
                             <field name="gender"/>
                         </page>
                         <page string="Pharmacy" name="Pharmacy">
-                            <field name="booking_date"/>
+                            <field name="appointment_pharmacy_line_ids">
+                                <tree editable ="bottom">
+                                    <field name ="product_id"/>
+                                    <field name ="price"/>
+                                    <field name ="qty"/>
+
+                                </tree>
+                                <form>
+                                    <group>
+                                        <field name ="product_id"/>
+                                        <field name ="price"/>
+                                        <field name ="qty"/>
+                                    </group>
+                                </form>
+                            </field>
                         </page>
                     </notebook>
 

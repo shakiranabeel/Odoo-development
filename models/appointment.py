@@ -10,9 +10,18 @@ class appointmentpatient(models.Model):
     booking_date = fields.Date(string="Booking date", default = fields.Date.context_today)
     gender=fields.Selection([('male','Male'),('female','Female')], string="Gender", related ='patient_id.gender')
     ref = fields.Char(string = 'Reference')
+    appointment_pharmacy_line_ids =fields.One2many('appointment.pharmacy.line', 'appointment_id', string ='Pharmacy')
 
 
+class AppointmentPharmacyLine(models.Model):
+    _name = 'appointment.pharmacy.line'
+    _inherit = ['mail.thread','mail.activity.mixin']
+    _description = "Appointment Pharmacy Line"
 
+    product_id = fields.Many2one('product.product', string="Product",required='True')
+    price = fields.Float(related ='product_id.lst_price')
+    qty = fields.Integer(string="Quantity", default=1)
+    appointment_id =fields.Many2one('appointment.patient', string='Appointment')
 
 
     @api.onchange('patient_id')
