@@ -4,6 +4,7 @@ class appointmentpatient(models.Model):
     _name = 'appointment.patient'
     _inherit = ['mail.thread','mail.activity.mixin']
     _description = "appointment patient"
+    _rec_name ='patient_id'
 
     patient_id = fields.Many2one('hospital.patient', string="Patient")
     appointment_date = fields.Datetime(string="Appointment date", default=fields.Datetime.now)
@@ -11,7 +12,7 @@ class appointmentpatient(models.Model):
     gender=fields.Selection([('male','Male'),('female','Female')], string="Gender", related ='patient_id.gender')
     ref = fields.Char(string = 'Reference')
     appointment_pharmacy_line_ids =fields.One2many('appointment.pharmacy.line', 'appointment_id', string ='Pharmacy')
-
+    prescription =fields.Html(string="Prescription")
 
 class AppointmentPharmacyLine(models.Model):
     _name = 'appointment.pharmacy.line'
