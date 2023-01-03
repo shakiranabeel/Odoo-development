@@ -24,6 +24,13 @@ class appointmentpatient(models.Model):
         ('done','Done'),
         ('cancel','Cancelled')], string="State")
 
+    @api.onchange('patient_id')
+    def onchange_patient_id(self):
+        self.ref = self.patient_id.ref
+        
+    def action_test(self):
+        print("Button clicked")
+
 
 class AppointmentPharmacyLine(models.Model):
     _name = 'appointment.pharmacy.line'
@@ -36,6 +43,5 @@ class AppointmentPharmacyLine(models.Model):
     appointment_id =fields.Many2one('appointment.patient', string='Appointment')
 
 
-    @api.onchange('patient_id')
-    def onchange_patient_id(self):
-        self.ref = self.patient_id.ref
+   
+    
