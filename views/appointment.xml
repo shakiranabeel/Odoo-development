@@ -8,7 +8,7 @@
         <field name="arch" type="xml">    
             <form>
                 <header>
-                    <button name="%(module2.action_hospital)d" string="Action button" type="action" class="oe_highlight"/>
+                    <button name="%(module2.action_hospital)d" string="Action button" type="action" class="oe_highlight" confirm="Are you sure to continue?" help="To go to the patient details"/>
 
                     <field name="state" widget="statusbar" options="{'clickable':'1'}" statusbar_visible="draft,in_consultation,done"/>
                 </header>
@@ -26,7 +26,7 @@
                             <field name = "booking_date"/>
                         </group>
                         <group>
-                            <button name="action_test" string="Object button" type="object" class="oe_highlight"/>
+                            
                             <field name = "gender"/>
                             <field name = "ref"/>
                         </group>

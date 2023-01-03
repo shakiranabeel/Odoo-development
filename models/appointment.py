@@ -9,7 +9,7 @@ class appointmentpatient(models.Model):
     patient_id = fields.Many2one('hospital.patient', string="Patient")
     appointment_date = fields.Datetime(string="Appointment date", default=fields.Datetime.now)
     booking_date = fields.Date(string="Booking date", default = fields.Date.context_today)
-    gender=fields.Selection([('male','Male'),('female','Female')], string="Gender", related ='patient_id.gender')
+    gender=fields.Selection([('male','Male'),('female','Female')], string="Gender", related ='patient_id.gender', help="Gender of the patient")
     ref = fields.Char(string = 'Reference')
     appointment_pharmacy_line_ids =fields.One2many('appointment.pharmacy.line', 'appointment_id', string ='Pharmacy')
     prescription =fields.Html(string="Prescription")
@@ -28,8 +28,7 @@ class appointmentpatient(models.Model):
     def onchange_patient_id(self):
         self.ref = self.patient_id.ref
         
-    def action_test(self):
-        print("Button clicked")
+    
 
 
 class AppointmentPharmacyLine(models.Model):
