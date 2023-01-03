@@ -9,8 +9,9 @@
             <form>
                 <header>
                     <button name="%(module2.action_hospital)d" string="Action button" type="action" class="oe_highlight" confirm="Are you sure to continue?" help="To go to the patient details"/>
+                    <button name="object_test" string="Object button" type="object" class="oe_highlight" confirm="Are you sure to continue?" help="To go to the patient details"/>
 
-                    <field name="state" widget="statusbar" options="{'clickable':'1'}" statusbar_visible="draft,in_consultation,done"/>
+                    <field name="state" widget="statusbar" options="{'clickable':'1'}" />
                 </header>
                 <sheet>
                     <div class="oe_title">
@@ -29,6 +30,8 @@
                             
                             <field name = "gender"/>
                             <field name = "ref"/>
+                            
+                           
                         </group>
                         
                     </group>
@@ -72,12 +75,15 @@
         <field name="name">appointment.patient.tree</field>
         <field name="model">appointment.patient</field>
         <field name="arch" type="xml">
-            <tree>
+            <tree decoration-success="state=='done'" decoration-warning="state=='cancel'">
                 <field name="patient_id"/>
-               
-                <field name="booking_date"/> 
-                <field name="appointment_date"/>
+                <field name="gender" optional='hide'/>
                 
+                <field name="booking_date" optional='hide'/> 
+                <field name="appointment_date"/>
+                <field name="activity_ids" widget="list_activity"/>
+                <field name = "state" widget="badge" decoration-success="state=='done'" decoration-info ="state=='draft'" decoration-muted="state=='in_consultation'" decoration-warning="state=='cancel'"/>
+           
             </tree>
         </field>
     </record>

@@ -10,7 +10,7 @@ class appointmentpatient(models.Model):
     appointment_date = fields.Datetime(string="Appointment date", default=fields.Datetime.now)
     booking_date = fields.Date(string="Booking date", default = fields.Date.context_today)
     gender=fields.Selection([('male','Male'),('female','Female')], string="Gender", related ='patient_id.gender', help="Gender of the patient")
-    ref = fields.Char(string = 'Reference')
+    ref = fields.Char(related ='patient_id.ref')
     appointment_pharmacy_line_ids =fields.One2many('appointment.pharmacy.line', 'appointment_id', string ='Pharmacy')
     prescription =fields.Html(string="Prescription")
     priority = fields.Selection([
@@ -27,6 +27,15 @@ class appointmentpatient(models.Model):
     @api.onchange('patient_id')
     def onchange_patient_id(self):
         self.ref = self.patient_id.ref
+
+    def object_test(self):
+        return {
+            'effect' : {
+            'fadeout' :'slow',
+            'message': 'Click Successful',
+            'type' :'rainbow_man'
+            }
+        }
         
     
 
