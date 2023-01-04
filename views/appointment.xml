@@ -8,10 +8,12 @@
         <field name="arch" type="xml">    
             <form>
                 <header>
-                    <button name="%(module2.action_hospital)d" string="Action button" type="action" class="oe_highlight" confirm="Are you sure to continue?" help="To go to the patient details"/>
-                    <button name="object_test" string="Object button" type="object" class="oe_highlight" confirm="Are you sure to continue?" help="To go to the patient details"/>
-
-                    <field name="state" widget="statusbar" options="{'clickable':'1'}" />
+                    <!-- <button name="%(module2.action_hospital)d" string="Action button" type="action" class="oe_highlight" confirm="Are you sure to continue?" help="To go to the patient details"/> -->
+                    <button name="action_in_consultation" string="In Consultation" type="object" class="oe_highlight" states='draft'/>
+                    <button name="action_done" string="Mark as Done" type="object" class="oe_highlight" states="in_consultation"/>
+                    <button name="action_cancel" string="Cancel" type="object" class="oe_highlight" states="draft, in_consultation"/>
+                    <button name="action_reset" string="Reset" type="object" class="oe_highlight" states="cancel"/>
+                    <field name="state" widget="statusbar" />
                 </header>
                 <sheet>
                     <div class="oe_title">
@@ -27,7 +29,8 @@
                             <field name = "booking_date"/>
                         </group>
                         <group>
-                            
+                            <field name = "hide_price" groups='base.group_no_one'/>
+                            <field name = "doctor_id"/>
                             <field name = "gender"/>
                             <field name = "ref"/>
                             
@@ -37,13 +40,13 @@
                     </group>
                     <notebook>
                         <page string="Prescription" name="Prescription">
-                            <field name="prescription" placeholder="Enter your prescription"/>
+                            <field name="prescription" placeholder="Enter your prescription" options="{'collaborative' :'True'}"/>
                         </page>
                         <page string="Pharmacy" name="Pharmacy">
                             <field name="appointment_pharmacy_line_ids">
                                 <tree editable ="bottom">
                                     <field name ="product_id"/>
-                                    <field name ="price"/>
+                                    <field name ="price" attrs="{'column_invisible':[('parent.hide_price','=',True)]}"/>
                                     <field name ="qty"/>
 
                                 </tree>
@@ -75,14 +78,14 @@
         <field name="name">appointment.patient.tree</field>
         <field name="model">appointment.patient</field>
         <field name="arch" type="xml">
-            <tree decoration-success="state=='done'" decoration-warning="state=='cancel'">
+            <tree decoration-success="state=='done'" decoration-danger="state=='cancel'" sample="1" multi_edit ="1">
                 <field name="patient_id"/>
                 <field name="gender" optional='hide'/>
-                
+                <field name = "doctor_id"/>
                 <field name="booking_date" optional='hide'/> 
                 <field name="appointment_date"/>
                 <field name="activity_ids" widget="list_activity"/>
-                <field name = "state" widget="badge" decoration-success="state=='done'" decoration-info ="state=='draft'" decoration-muted="state=='in_consultation'" decoration-warning="state=='cancel'"/>
+                <field name = "state" widget="badge" decoration-success="state=='done'" decoration-info ="state=='draft'" decoration-muted="state=='in_consultation'" decoration-danger="state=='cancel'"/>
            
             </tree>
         </field>

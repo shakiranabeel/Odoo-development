@@ -10,14 +10,16 @@
             
             <form>
                 <sheet>
+                    <field name="image" widget="image" class="oe_avatar"/>
                     <group>
+                        
                         <group>
-                            <field name ="name"/>
+                            <field name ="name" default_focus="1"/>
                             <field name="gender"/>
                             <field name="bloodgroup"/>
                             <field name="date_of_birth"/>
                             <field name="ref"/>
-
+                    
                         </group>
                         <group>
                             <field name ="age"/>

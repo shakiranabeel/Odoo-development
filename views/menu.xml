@@ -3,20 +3,20 @@
 
 
 #creating  menu
-    <menuitem id = "hospital_main_menu"
+        <menuitem id = "hospital_main_menu"
             name = "Hospital"
             sequence = "4"/>
 #creating submenu
-    <menuitem id = "patient_details_menu"
+        <menuitem id = "patient_details_menu"
             name = "Patient details"
             parent ="hospital_main_menu"
             sequence = "0"/>
-    <menuitem id="appointments_main_menu"
+        <menuitem id="appointments_main_menu"
             name="Appointments"
             parent="hospital_main_menu"
             sequence="10"/>
+        
     
-
    
 </odoo>
 

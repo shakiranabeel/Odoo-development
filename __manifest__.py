@@ -13,8 +13,7 @@
         'views/menu.xml',
         'views/patient.xml',
         'views/female.xml',
-        'views/appointment.xml'
-
+        'views/appointment.xml',
     ],
     'installable': True,
     'application': True,

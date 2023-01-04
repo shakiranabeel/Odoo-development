@@ -5,7 +5,7 @@ class hospitalpatient(models.Model):
     _name = 'hospital.patient'
     _inherit = ['mail.thread','mail.activity.mixin']
     _description = "hospital patient"
-
+    image=fields.Image(string="Image")
     name = fields.Char(string ='Name', tracking = True)
     date_of_birth =fields.Date(string='Date of Birth')
     age = fields.Integer(string = 'Age', compute = '_compute_age')
@@ -14,6 +14,7 @@ class hospitalpatient(models.Model):
     bloodgroup=fields.Char(string='Blood group')
     active=fields.Boolean(string="Active", default = True)
     ref = fields.Char(string = 'Reference')
+    
  
 
     @api.depends('date_of_birth')
