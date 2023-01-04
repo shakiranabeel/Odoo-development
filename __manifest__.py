@@ -14,6 +14,7 @@
         'views/patient.xml',
         'views/female.xml',
         'views/appointment.xml',
+        'views/tag.xml'
     ],
     'installable': True,
     'application': True,
