@@ -6,4 +6,5 @@ class PatientTag(models.Model):
     _description = "Patient Tag"
 
 
-    name=fields.Char(string="Tag")
+    name = fields.Char(string = "Tag")
+    color = fields.Integer(string = "Color")
