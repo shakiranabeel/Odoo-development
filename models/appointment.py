@@ -4,7 +4,7 @@ class appointmentpatient(models.Model):
     _name = 'appointment.patient'
     _inherit = ['mail.thread','mail.activity.mixin']
     _description = "appointment patient"
-    _rec_name ='patient_id'
+    _rec_name ='ref'
 
     patient_id = fields.Many2one('hospital.patient', string = "Patient")
     appointment_date = fields.Datetime(string="Appointment date", default = fields.Datetime.now)
@@ -50,7 +50,8 @@ class appointmentpatient(models.Model):
             rec.state="done"
     def action_cancel(self):
         for rec in self:
-            rec.state="cancel"       
+            rec.state="cancel" 
+          
     def action_reset(self):
         for rec in self:
             rec.state="draft"  

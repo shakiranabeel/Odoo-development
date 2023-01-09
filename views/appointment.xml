@@ -11,7 +11,8 @@
                     <!-- <button name="%(module2.action_hospital)d" string="Action button" type="action" class="oe_highlight" confirm="Are you sure to continue?" help="To go to the patient details"/> -->
                     <button name="action_in_consultation" string="In Consultation" type="object" class="oe_highlight" states='draft'/>
                     <button name="action_done" string="Mark as Done" type="object" class="oe_highlight" states="in_consultation"/>
-                    <button name="action_cancel" string="Cancel" type="object" class="oe_highlight" states="draft, in_consultation"/>
+                    <button name="%(module2.action_cancel_appointment_wizard)d" string="Cancel" type="action" class="oe_highlight" context="{'default_appointment_id' :active_id , 'hide_appointment' :1}"/>
+                    <!-- <button name="action_cancel" string="Cancel" type="object" class="oe_highlight" states="draft, in_consultation"/> -->
                     <button name="action_reset" string="Reset" type="object" class="oe_highlight" states="cancel"/>
                     <field name="state" widget="statusbar" />
                 </header>
@@ -123,6 +124,24 @@
             </kanban>
         </field>
     </record>
+    # create activity view
+    <record id="view_appointments_activity" model="ir.ui.view">
+        <field name="name">appontment activity</field>
+        <field name="model">appointment.patient</field>
+        <field name="arch" type="xml">
+            <activity string="Appointments">
+                <field name="patient_id"/>
+                <templates>
+                    <div t-name="activity-box">
+                        <img t-att-src="activity_image('hospital.patient', 'image', record.patient_id.raw_value)" t-att-title="record.patient_id.value" t-att-alt="record.patient_id.value"/>
+                        <div>
+                            <field name="patient_id" />
+                        </div>
+                    </div>
+                </templates>
+            </activity>
+        </field>
+    </record>
 
     #creating search view
     <record id="view_appointment_patient_search" model= "ir.ui.view">
@@ -134,8 +153,6 @@
                 
                 <field name="booking_date"/> 
                 <field name="appointment_date"/>
-                
-            
             </search>
         </field>
     </record>
@@ -144,7 +161,7 @@
     <record id="action_appointments" model="ir.actions.act_window">
             <field name="name">Appointments</field>
             <field name="res_model">appointment.patient</field>
-            <field name="view_mode">tree,kanban,form</field>
+            <field name="view_mode">tree,kanban,form,activity</field>
             <field name="context">{}</field>
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">
@@ -159,5 +176,5 @@
             name = "Appointments"
             action = "action_appointments"
             parent ="appointments_main_menu"
-            sequence = "10"/>
+            sequence = "1"/>
 </odoo>

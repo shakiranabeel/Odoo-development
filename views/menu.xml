@@ -19,8 +19,12 @@
             name="Configurations"
             parent="hospital_main_menu"
             sequence="2"/>
+        <menuitem id="cancel_appointents_menu"
+            name="Cancel Appointments"
+            parent="appointments_main_menu"
+            action="action_cancel_appointment_wizard"
+            sequence="2"/>
         
-    
    
 </odoo>
 

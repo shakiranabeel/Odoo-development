@@ -98,6 +98,7 @@
             </kanban>
         </field>
     </record>
+     
 
     #creating search view
     <record id="view_hospital_patient_search" model= "ir.ui.view">
